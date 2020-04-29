@@ -15,6 +15,70 @@ def is_json(json_data):
   return is_valid
 
 
+
+class StatusAPIDetailView(
+  mixins.UpdateModelMixin,
+  mixins.DestroyModelMixin,
+  generics.RetrieveAPIView
+  ): 
+
+  permission_classes = []
+  authentication_classes = []
+  serializer_class = StatusSerializer
+  queryset = Status.objects.all()
+  lookup_field ='id'
+
+  def put(self, request, *args, **kwargs):
+    return self.update(request, *args, **kwargs)
+
+  def patch(self, request, *args, **kwargs):
+    return self.partial_update(request, *args, **kwargs)
+
+  def delete(self, request, *args, **kwargs):
+    return self.destroy(request, *args, **kwargs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class StatusAPIView(
   mixins.CreateModelMixin, 
   mixins.RetrieveModelMixin,

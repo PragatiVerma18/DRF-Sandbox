@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
@@ -18,4 +20,5 @@ urlpatterns = [
     # url(r'^json/example/$', update_model_detail_view),
     # url(r'^json/serialized/list/$', SerializedListView.as_view()),
     # url(r'^json/serialized/details/$', SerializedDetailView.as_view()),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
