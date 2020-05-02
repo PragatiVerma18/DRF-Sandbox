@@ -6,7 +6,7 @@ from rest_framework import generics, permissions
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.db.models import Q
 from .serializers import UserRegisterSerializer
-from .permissions import AnonPermissionOnly
+from accounts.api.permissions import AnonPermissionOnly
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -53,6 +53,8 @@ class RegisterAPIView(generics.CreateAPIView):
 
   def get_serializer_context(self, *args, **kwargs):
     return {'request': self.request}
+
+
 
 
 

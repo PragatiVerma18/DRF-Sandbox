@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^api/updates/', include('updates.api.urls')),
     url(r'^api/status/', include('status.api.urls')),
     url(r'^api/auth/', include('accounts.api.urls')),
+    url(r'^api/user/', include('accounts.api.users.urls'), name='api-user'),
     # url(r'^json/cbv/$', JsonCBV.as_view()),
     # url(r'^json/cbv2/$', JsonCBV2.as_view()),
     # url(r'^json/example/$', update_model_detail_view),
