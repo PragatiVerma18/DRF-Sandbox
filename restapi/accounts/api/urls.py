@@ -20,8 +20,8 @@ from .views import AuthAPIView, RegisterAPIView
 app_name = 'accounts.api'
 urlpatterns = [
 
-    url(r'^$', AuthAPIView.as_view()),
-    url(r'^register/$', RegisterAPIView.as_view()),
+    url(r'^$', AuthAPIView.as_view(), name='login'),
+    url(r'^register/$', RegisterAPIView.as_view(), name='register'),
 
     url(r'^jwt/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     
