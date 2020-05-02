@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 from rest_framework import serializers
 from status.api.serializers import StatusInlineUserSerializer
+from rest_framework.reverse import reverse as api_reverse
 
 User = get_user_model()
 
@@ -23,7 +24,8 @@ class UserPublicSerializer(serializers.ModelSerializer):
     ]  
 
   def get_uri(self, obj):
-    return "/api/users/{id}/".format(id=obj.id)
+    request = self.context.get('request')
+    return api_reverse("api-user:detail", kwargs={"username": obj.username}, request=request)
 
   # def get_status_list(self, obj):
   #   qs = obj.status_set.all()

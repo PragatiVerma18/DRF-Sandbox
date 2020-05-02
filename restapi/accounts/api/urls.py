@@ -17,7 +17,7 @@ from rest_framework_simplejwt.views import (
 )
 
 from .views import AuthAPIView, RegisterAPIView
-
+app_name = 'accounts.api'
 urlpatterns = [
 
     url(r'^$', AuthAPIView.as_view()),

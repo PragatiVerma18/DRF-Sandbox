@@ -91,6 +91,8 @@ class StatusAPIView(
   # authentication_classes = [SessionAuthentication]
   serializer_class = StatusSerializer
   passed_id = None
+  search_fields = ('user__username', 'content')
+  
 
   def get_queryset(self):
     request = self.request

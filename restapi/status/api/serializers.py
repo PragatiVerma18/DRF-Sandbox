@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from status.models import Status
 # from accounts.api.users.serializers import UserPublicSerializer
-
+from rest_framework.reverse import reverse as api_reverse
 class CustomSerializer(serializers.Serializer):
   content = serializers.CharField()
   email = serializers.EmailField()
@@ -18,7 +18,9 @@ class StatusInlineUserSerializer(serializers.ModelSerializer):
     ]
 
   def get_uri(self, obj):
-    return "/api/status/{id}/".format(id=obj.id)
+    request = self.context.get('request')
+    # return "/api/status/{id}/".format(id=obj.id)
+    return api_reverse('api-status:detail', kwargs={"id":obj.id}, request=request)
 
 
 
